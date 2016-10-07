@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/gelenity.iml" filepath="$PROJECT_DIR$/gelenity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gelenity-automation-bdd.iml" filepath="$PROJECT_DIR$/gelenity-automation-bdd.iml" />
     </modules>
   </component>
 </project>

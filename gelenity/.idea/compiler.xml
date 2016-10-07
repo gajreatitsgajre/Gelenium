@@ -22,11 +22,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="gelenity" />
+        <module name="gelenity-automation-bdd" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="gelenity" target="1.8" />
+      <module name="gelenity-automation-bdd" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
