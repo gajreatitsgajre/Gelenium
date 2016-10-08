@@ -9,6 +9,8 @@ import com.google.inject.*;
 import com.google.inject.matcher.Matchers;
 import com.google.inject.name.Names;
 import cucumber.api.guice.CucumberModules;
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.*;
 import cucumber.runtime.java.guice.InjectorSource;
 import cucumber.runtime.java.guice.ScenarioScoped;
@@ -86,6 +88,8 @@ public class GeleniumConfiguration extends AbstractModule implements InjectorSou
         cucumberAnnotations.add(Then.class);
         cucumberAnnotations.add(When.class);
         cucumberAnnotations.add(But.class);
+        cucumberAnnotations.add(After.class);
+        cucumberAnnotations.add(Before.class);
         ConfigurationBuilder builder = new ConfigurationBuilder();
         builder.forPackages("com.application.tests").setScanners(new MethodAnnotationsScanner());
         Reflections reflections = new Reflections(builder);

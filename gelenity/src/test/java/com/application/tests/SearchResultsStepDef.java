@@ -11,8 +11,6 @@ import cucumber.api.java.en.*;
  */
 public class SearchResultsStepDef {
 
-//    private static Logger LOG = LoggerFactory.getLogger(SearchResultsStepDef.class);
-
     @Inject
     SearchSteps searchSteps;
 

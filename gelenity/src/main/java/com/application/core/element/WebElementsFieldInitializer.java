@@ -25,8 +25,8 @@ public class WebElementsFieldInitializer {
         By by = annotations.buildBy();
         try {
             WebElementListHandler e = new WebElementListHandler(injector, searchContext, by);
-            List element = (List) Proxy.newProxyInstance(WebElement.class.getClassLoader(),
-                    new Class[]{WebElement.class, Locatable.class, SearchContext.class, WrapsElement.class}, e);
+            List<WebElement> element = (List<WebElement>)Proxy.newProxyInstance(WebElement.class.getClassLoader(),
+                    new Class[]{List.class, WebElement.class, Locatable.class, SearchContext.class, WrapsElement.class}, e);
             field.setAccessible(true);
             field.set(page, element);
         }

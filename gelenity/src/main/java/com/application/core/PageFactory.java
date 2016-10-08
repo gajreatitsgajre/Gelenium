@@ -3,6 +3,7 @@ package com.application.core;
 import com.application.core.browser.BrowserProvider;
 import com.application.core.configuration.PageObjectConfiguration;
 import com.application.core.element.WebElementFieldInitializer;
+import com.application.core.element.WebElementsFieldInitializer;
 import com.google.inject.Inject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,6 +12,7 @@ import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.events.WebDriverEventListener;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.ParameterizedType;
 
 /**
  * Created by Yuvaraj on 07/10/2016.
@@ -33,8 +35,18 @@ public class PageFactory implements WebDriverEventListener, DependencyFactory<Pa
         Field[] fields = page.getClass().getFields();
         for(Field field: fields){
             WebElementFieldInitializer fieldInitializer = new WebElementFieldInitializer();
+            WebElementsFieldInitializer webElementsFieldInitializer = new WebElementsFieldInitializer();
             this.configuration.injectMembers(fieldInitializer);
-            fieldInitializer.initializeField(field, page, getDriver());
+            this.configuration.injectMembers(webElementsFieldInitializer);
+            if(field.getGenericType().equals(WebElement.class)) {
+                fieldInitializer.initializeField(field, page, getDriver());
+            }
+            else if((field.getGenericType() instanceof ParameterizedType)) {
+                if (((ParameterizedType) field.getGenericType()).getActualTypeArguments()[0]
+                        .equals(WebElement.class)) {
+                    webElementsFieldInitializer.initializeField(field, page, getDriver());
+                }
+            }
         }
         return (T)page;
     }

@@ -22,7 +22,7 @@ public class WebElementListHandler implements InvocationHandler {
     }
 
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        Object element = this.elements;
+        List<WebElement> element = this.elements;
         if(element == null){
             element = this.searchContext.findElements(byObj);
         }

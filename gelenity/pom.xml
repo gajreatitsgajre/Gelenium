@@ -49,6 +49,7 @@
             </activation>
             <properties>
                 <app.url>http://www.amazon.co.uk</app.url>
+                <app.browser>chrome</app.browser>
             </properties>
         </profile>
     </profiles>
